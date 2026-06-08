@@ -100,7 +100,7 @@ Entidades principais:
 
 ## Roadmap
 
-### Sprint 0
+### Sprint 0 *(Fase atual)*
 
 - [ ] Modelagem do domínio
 - [ ] Diagrama UML
