@@ -93,7 +93,9 @@ docs
 ## Autor
 
 *Rafael Passos*
+
 Engenheiro de Software Backend | Especialista em Operações Industriais
+
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rapassos)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:rapassos@gmail.com)
 
