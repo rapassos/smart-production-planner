@@ -1,144 +1,241 @@
 # Smart Production Planner
 
-Sistema de apoio ao Planejamento e Controle da Produção (PCP), desenvolvido para auxiliar analistas de produção, logística e operações industriais na tomada de decisões relacionadas à capacidade produtiva, programação de recursos e atendimento da demanda.
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+![Java](https://img.shields.io/badge/Java-21-blue)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-green)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-blue)
 
 ---
 
-## Sobre o Projeto
+## Visão Geral
 
-Em muitas indústrias, atividades de planejamento ainda dependem de planilhas complexas, controles paralelos e análises manuais que consomem tempo e aumentam o risco de erros operacionais.
+O Smart Production Planner é um sistema de apoio ao Planejamento e Controle da Produção (PCP), desenvolvido para auxiliar analistas de produção, logística e operações industriais na tomada de decisões relacionadas à capacidade produtiva, programação de recursos e atendimento da demanda.
 
-O Smart Production Planner nasce com o objetivo de centralizar informações relevantes para o planejamento da produção, permitindo uma visão mais clara da capacidade produtiva, recursos disponíveis, pedidos em carteira e necessidades de manufatura.
+O objetivo principal do sistema é responder perguntas como:
 
-O projeto foi idealizado com base em experiências reais adquiridas em ambientes industriais dos segmentos metalúrgico e automotivo, buscando reproduzir desafios encontrados diariamente por profissionais de PCP, logística, manutenção e operações.
+* Existe capacidade produtiva suficiente para atender a demanda?
+* Qual recurso produtivo está sobrecarregado?
+* Quais pedidos correm risco de atraso?
+* Qual será a ocupação dos recursos produtivos em determinado período?
 
----
-
-## Problemas que o sistema pretende resolver
-
-- Falta de visibilidade da capacidade produtiva disponível;
-- Dificuldade na priorização de pedidos;
-- Dependência excessiva de planilhas;
-- Baixa integração das informações de produção;
-- Tempo elevado para análises operacionais;
-- Suporte limitado à tomada de decisão.
+O projeto foi inspirado em experiências reais adquiridas em ambientes industriais dos segmentos metalúrgico, automotivo e manufatureiro.
 
 ---
 
-## Objetivos do Projeto
+## 🚧 Status do Projeto
 
-- Centralizar informações relevantes para o PCP;
-- Simular capacidade produtiva;
-- Apoiar o planejamento da produção;
-- Facilitar a programação de recursos produtivos;
-- Disponibilizar indicadores operacionais;
-- Reduzir atividades manuais e repetitivas;
-- Servir como laboratório de estudo para tecnologias Java aplicadas à indústria.
+### Sprint 0 — Concluída ✅
 
----
+Artefatos entregues:
 
-## Público-Alvo
+* [x] Visão Geral do Sistema
+* [x] Modelagem de Domínio
+* [x] Diagrama UML
+* [x] Modelo Lógico de Dados
+* [x] ADR-001 — Monólito Modular
+* [x] ADR-002 — PostgreSQL
 
-- Analistas PCP
-- Planejadores de Produção
-- Analistas de Processos
-- Analistas de Operações
-- Consultores ERP
-- Profissionais de Logística
-- Gestores Industriais
+### Próxima Etapa
 
----
+Sprint Foundation
 
-## Funcionalidades Planejadas
+* [ ] Criação do Projeto Spring Boot
+* [ ] Configuração PostgreSQL
+* [ ] Docker Compose
+* [ ] Flyway
+* [ ] Estrutura Modular da Aplicação
+* [ ] Configuração Inicial do Ambiente
 
-### MVP 1
+### Status Geral
 
-- Cadastro de Produtos
-- Cadastro de Recursos Produtivos
-- Cadastro de Clientes
-- Cadastro de Pedidos
-
-### MVP 2
-
-- Geração de Ordens de Produção
-- Controle de Capacidade
-- Programação de Recursos
-
-### MVP 3
-
-- Simulação de Cenários
-- Dashboard Operacional
-- Indicadores de Planejamento
+| Área           | Status             |
+| -------------- | ------------------ |
+| Documentação   | ✅ Concluída        |
+| Arquitetura    | ✅ Concluída        |
+| Infraestrutura | 🚧 Em Planejamento |
+| Implementação  | ⏳ Não Iniciada     |
+| Testes         | ⏳ Não Iniciados    |
 
 ---
 
-## Arquitetura Inicial
+## 📊 Modelo de Domínio
 
-Entidades principais:
+O diagrama abaixo representa as principais entidades do domínio e seus relacionamentos.
 
-- Product
-- Resource
-- Customer
-- SalesOrder
-- ProductionOrder
+![Modelo de Domínio](docs/diagrams/domain-model.png)
 
 ---
 
-## Tecnologias Planejadas
+## Arquitetura de Alto Nível
 
-- Java
-- Spring Boot
-- Spring Data JPA
-- Hibernate
-- PostgreSQL
-- Maven
-- Docker
-- REST API
-- GitHub Actions
+```text
++----------------------+
+|      Frontend        |
+| React + TypeScript   |
++----------+-----------+
+           |
+           | REST API
+           |
++----------v-----------+
+|       Backend        |
+|    Spring Boot 3     |
++----------+-----------+
+           |
+           |
++----------v-----------+
+|      PostgreSQL      |
++----------------------+
+```
+
+---
+
+## Stack Tecnológica
+
+### Backend
+
+* Java 21
+* Spring Boot 3
+* Spring Data JPA
+* Bean Validation
+
+### Banco de Dados
+
+* PostgreSQL
+
+### Testes
+
+* JUnit 5
+* Mockito
+
+### Infraestrutura
+
+* Docker
+* Docker Compose
+
+---
+
+## Estilo Arquitetural
+
+### Monólito Modular
+
+A aplicação será organizada por domínios de negócio, permanecendo implantada como uma única aplicação durante a fase inicial do produto.
+
+Benefícios:
+
+* Menor complexidade operacional
+* Maior velocidade de desenvolvimento
+* Facilidade de manutenção durante o MVP
+* Possibilidade de evolução futura para microsserviços
+
+---
+
+## Principais Domínios de Negócio
+
+* Gestão de Clientes
+* Gestão de Produtos
+* Gestão de Recursos Produtivos
+* Gestão de Pedidos de Venda
+* Gestão de Ordens de Produção
+* Planejamento de Capacidade
 
 ---
 
 ## Roadmap
 
-### Sprint 0 *(Fase atual)*
+### Sprint 0 — Concluída
 
-- [ ] Modelagem do domínio
-- [ ] Diagrama UML
-- [ ] Estrutura inicial Spring Boot
-- [ ] Configuração do banco de dados
+* Modelagem de Domínio
+* Diagrama UML
+* Modelo Lógico de Dados
+* ADR-001 — Monólito Modular
+* ADR-002 — PostgreSQL
+* Estrutura Inicial de Documentação
+
+### Sprint Foundation
+
+* Projeto Spring Boot
+* PostgreSQL
+* Docker Compose
+* Flyway
+* Estrutura Modular
 
 ### Sprint 1
 
-- [ ] CRUD de Produtos
-- [ ] CRUD de Recursos
-- [ ] CRUD de Clientes
+* CRUD Product
+* CRUD Resource
+* CRUD Customer
 
 ### Sprint 2
 
-- [ ] CRUD de Pedidos
-- [ ] Relacionamentos entre entidades
-- [ ] Persistência com JPA
+* CRUD SalesOrder
+* CRUD SalesOrderItem
+* Relacionamentos JPA
 
 ### Sprint 3
 
-- [ ] Geração de Ordens de Produção
-- [ ] Regras básicas de capacidade
+* CRUD ProductionOrder
+* Motor Inicial de Capacidade
 
 ### Sprint 4
 
-- [ ] Dashboard inicial
-- [ ] Indicadores operacionais
+* Dashboard Operacional
+* Indicadores de Capacidade
+* Ocupação de Recursos
 
 ---
 
-## Motivação
+## 📚 Documentação
 
-Este projeto faz parte da minha jornada de evolução profissional na interseção entre operações industriais e tecnologia.
-
-Meu objetivo é unir conhecimentos adquiridos em Planejamento e Controle da Produção (PCP), ERP, indicadores de desempenho e melhoria de processos com desenvolvimento de software utilizando Java e Spring Boot.
+```text
+docs
+├── adr
+│   ├── ADR-001-monolito-modular.md
+│   └── ADR-002-postgresql.md
+│
+├── architecture
+│   └── system-overview.md
+│
+├── database
+│   └── logical-data-model.md
+│
+└── diagrams
+    ├── domain-model.puml
+    └── domain-model.png
+```
 
 ---
 
-## Status
+## Evoluções Futuras
 
-🚧 Em desenvolvimento
+* MRP Simplificado
+* Controle de Estoque
+* Sequenciamento Automático
+* Integração ERP
+* Integração SAP PP
+* Simulação Multi-Recursos
+* Dashboard Executivo
+* Inteligência Artificial para Apoio ao Planejamento
+* Geração Automática de Cenários Produtivos
+
+---
+
+## Público-Alvo
+
+* Analistas de PCP
+* Programadores de Produção
+* Coordenadores de Operações
+* Supervisores Industriais
+* Gestores de Manufatura
+
+---
+
+## Autor
+
+Rafael Passos
+
+---
+
+## Licença
+
+Projeto desenvolvido para fins de estudo, portfólio e evolução profissional na área de Arquitetura e Desenvolvimento de Software.
+
