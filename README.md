@@ -82,3 +82,19 @@ docs
 │   └── system-overview.md           # Visão de alto nível
 └── diagrams
     └── domain-model.puml            # Código-fonte do diagrama (PlantUML)
+```
+
+## 🚀 Evoluções Planejadas
+
+* MRP Simplificado: Cálculo de necessidade de materiais integrado ao plano.
+* Integração SAP PP/Datasul: Módulos de interface para ERPs de mercado.
+* IA de Planejamento: Sugestão automática de sequenciamento para otimização de setup.
+
+## Autor
+
+*Rafael Passos*
+Engenheiro de Software Backend | Especialista em Operações Industriais
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rapassos)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:rapassos@gmail.com)
+
+Este é um projeto de portfólio focado em demonstrar competências em Arquitetura de Software, Java Enterprise e conhecimento de domínio industrial.
