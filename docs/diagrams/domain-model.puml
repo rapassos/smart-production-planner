@@ -1,61 +1,97 @@
 @startuml
 
+skinparam classAttributeIconSize 0
+
+'=========================
+' ENUMS
+'=========================
+
+enum OrderStatus {
+OPEN
+PLANNED
+IN_PRODUCTION
+COMPLETED
+CANCELLED
+}
+
+enum ResourceType {
+INJECTION
+ASSEMBLY
+PAINT
+PLATING
+}
+
+enum ProductionOrderStatus {
+PLANNED
+RELEASED
+IN_PROGRESS
+COMPLETED
+}
+
+'=========================
+' ENTITIES
+'=========================
+
 class Customer {
-    UUID id
-    String code
-    String name
-    String city
-    String state
-    String country
-    Boolean active
+UUID id
+String code
+String name
+String city
+String state
+String country
+Boolean active
 }
 
 class SalesOrder {
-    UUID id
-    String orderNumber
-    LocalDate orderDate
-    LocalDate dueDate
-    OrderStatus status
+UUID id
+String orderNumber
+LocalDate orderDate
+LocalDate dueDate
+OrderStatus status
 }
 
 class SalesOrderItem {
-    UUID id
-    Integer quantity
-    BigDecimal unitPrice
+UUID id
+Integer quantity
+BigDecimal unitPrice
 }
 
 class Product {
-    UUID id
-    String code
-    String description
-    String family
-    Integer standardCycleTime
+UUID id
+String code
+String description
+String family
+Integer standardCycleTimeSeconds
 }
 
 class Resource {
-    UUID id
-    String code
-    String description
-    ResourceType type
-    Integer availableHoursPerDay
+UUID id
+String code
+String description
+ResourceType type
+Integer availableHoursPerDay
 }
 
 class ProductionOrder {
-    UUID id
-    String productionOrderNumber
-    Integer quantity
-    LocalDate startDate
-    LocalDate endDate
-    ProductionOrderStatus status
+UUID id
+String productionOrderNumber
+Integer quantity
+LocalDate startDate
+LocalDate endDate
+ProductionOrderStatus status
 }
 
 class CapacityPlan {
-    UUID id
-    String name
-    LocalDate startDate
-    LocalDate endDate
-    String notes
+UUID id
+String name
+LocalDate startDate
+LocalDate endDate
+String notes
 }
+
+'=========================
+' RELATIONSHIPS
+'=========================
 
 Customer ||--o{ SalesOrder
 
@@ -70,5 +106,9 @@ Resource ||--o{ ProductionOrder
 SalesOrder ||--o{ ProductionOrder
 
 CapacityPlan ||--o{ ProductionOrder
+
+SalesOrder --> OrderStatus
+Resource --> ResourceType
+ProductionOrder --> ProductionOrderStatus
 
 @enduml
