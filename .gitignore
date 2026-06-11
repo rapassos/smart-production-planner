@@ -1,16 +1,17 @@
-# Compiled class file
-*.class
+# --- Conceito Core: Build e Artefatos (Onde morava a bagunça) ---
+target/
+!.mvn/wrapper/maven-wrapper.jar
+build/
+bin/
 
-# Log file
+# --- Arquivos de Log e Temporários ---
 *.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
 .mtj.tmp/
+hs_err_pid*
+replay_pid*
 
-# Package Files #
+# --- Compilados e Pacotes ---
+*.class
 *.jar
 *.war
 *.nar
@@ -19,6 +20,16 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+# --- IDEs (IntelliJ IDEA, Eclipse, VS Code) ---
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# --- Arquivos do Sistema Operacional ---
+.DS_Store
+Thumbs.db
