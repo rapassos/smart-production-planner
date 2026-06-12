@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.bean.override.mockito.MockitoBean; // Novo pacote do Spring
-                                                                           // Boot 3.4+
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+import com.rapassos.smart_production_planner.sales.application.ProductionPlannerService;
 import com.rapassos.smart_production_planner.sales.application.SalesOrderService;
 import com.rapassos.smart_production_planner.sales.domain.SalesOrder;
 import com.rapassos.smart_production_planner.sales.infrastructure.dto.CreateOrderItemRequest;
@@ -29,8 +29,11 @@ class SalesOrderControllerTest {
         @Autowired
         private ObjectMapper objectMapper;
 
-        @MockitoBean // Substituindo o antigo @MockBean
+        @MockitoBean
         private SalesOrderService salesOrderService;
+
+        @MockitoBean // Injetando o novo mock para satisfazer o construtor atualizado
+        private ProductionPlannerService productionPlannerService;
 
         @Test
         void shouldReturnCreatedWhenPayloadIsValid() throws Exception {
@@ -63,5 +66,20 @@ class SalesOrderControllerTest {
                 mockMvc.perform(post("/api/v1/sales-orders").contentType(MediaType.APPLICATION_JSON)
                                 .content(objectMapper.writeValueAsString(invalidRequest)))
                                 .andExpect(status().isBadRequest());
+        }
+
+        @Test
+        void shouldReturnOkWhenPlanningExecutionIsTriggered() throws Exception {
+                // Arrange
+                SalesOrder mockPlannedOrder =
+                                SalesOrder.builder().id(99L).orderNumber("PO-PLAN-TEST").build();
+
+                when(productionPlannerService.planExecution(99L)).thenReturn(mockPlannedOrder);
+
+                // Act & Assert
+                mockMvc.perform(post("/api/v1/sales-orders/99/plan")
+                                .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+                                .andExpect(jsonPath("$.id").value(99L))
+                                .andExpect(jsonPath("$.orderNumber").value("PO-PLAN-TEST"));
         }
 }
